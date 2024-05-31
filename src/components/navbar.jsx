@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom"
+
 export default function Navbar(){
+  const navigate = useNavigate()
     return (
         <>
 <nav className="navbar navbar-expand-lg bg-warning-subtle text-warning-emphasis">
@@ -10,7 +13,7 @@ export default function Navbar(){
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
-            <button className="nav-link active" aria-current="page" href="">Characters List</button>
+            <button className="nav-link active" aria-current="page" onClick={()=>navigate('/')}>Characters List</button>
           {/* <a className="nav-link active" aria-current="page" href="">Characters List</a> */}
         </li>
         <li className="nav-item">
