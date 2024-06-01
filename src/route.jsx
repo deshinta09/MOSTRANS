@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import CharactersList from './pages/CharactersList'
 import DetailCharacter from './pages/DetailCharacter'
+import CharactersByLocation from './pages/CharactersByLocation'
 
 const route = createBrowserRouter([
     {
@@ -10,6 +11,10 @@ const route = createBrowserRouter([
     {
         path: '/:id',
         element: <DetailCharacter/>
+    },
+    {
+        path: '/characters',
+        element: <CharactersByLocation/>
     }
 ])
 
