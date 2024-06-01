@@ -31,9 +31,6 @@ export default function CharactersList(){
     return (
         <>
         <Navbar/>
-        <div style={{ display:'flex', justifyContent: 'center' }}>
-            <h2>List Characters Rick and Morty</h2>
-        </div>
         <div className="row gap-1" style={{marginTop:'70px', justifyContent:'center'}}>
             {
                 data?.characters?.results.map(el=><Card key={el.id} data={el}/>)

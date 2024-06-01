@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import axios from 'axios'
 import { useEffect, useState } from "react"
 import Navbar from "../components/navbar"
 
 export default function DetailCharacter(){
     const { id } = useParams()
+    const navigate = useNavigate()
     const [getData,setData] = useState({})
     const [loading,setLoading] = useState(false)
 
@@ -23,12 +24,6 @@ export default function DetailCharacter(){
         }
     }
 
-    // if (loading){
-        // return <div style={{ display:'flex', justifyContent: 'center', textAlign: 'center', padding: '3rem' }}>
-        //     <img src="./loading.gif" alt="loading..." />
-        // </div>
-    // }
-
     useEffect(()=>{
         getDetail()
     },[])
@@ -36,7 +31,6 @@ export default function DetailCharacter(){
     return(
         <>
         <Navbar/>
-        {/* <h1>page detail data {id}</h1> */}
         {
             loading? 
             <div style={{ display:'flex', justifyContent: 'center', textAlign: 'center', padding: '3rem' }}>
@@ -69,6 +63,9 @@ export default function DetailCharacter(){
                     <div style={{ backgroundColor: '#EEEEEE', borderRadius: 30, padding: '10px'}}>
                     <p>Gender : <span className="fw-bold">{getData.gender}</span></p>
                     </div>
+                </div>
+                <div style={{ padding: '2rem' }}>
+                    <button className="btn" style={{ backgroundColor: '#D1D8C5' }} onClick={()=>navigate('/')}>Back</button>
                 </div>
             </>
         }

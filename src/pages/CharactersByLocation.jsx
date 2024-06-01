@@ -8,9 +8,11 @@ export default function CharactersByLocation(){
     const [id,setId] = useState("")
     const [location,setLocation] = useState([])
     const [character,setCharacter] = useState({})
+    const [loading,setLoading] = useState(false)
 
     async function locations(){
         try {
+            setLoading(true)
             const { data } = await axios({
                 url:'https://rickandmortyapi.com/api/location',
                 method:'get'
@@ -18,11 +20,14 @@ export default function CharactersByLocation(){
             setLocation(data?.results)
         } catch (error) {
             console.log(error,'error data by location');
+        } finally {
+            setLoading(false)
         }
     }
 
     async function charactersById(){
         try {
+            setLoading(true)
             const { data } = await axios({
                 url: 'https://rickandmortyapi.com/api/location/'+id,
                 method:'get'
@@ -30,6 +35,8 @@ export default function CharactersByLocation(){
             setCharacter(data)
         } catch (error) {
             console.log(error,'<< error character by id in page location');
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -40,6 +47,12 @@ export default function CharactersByLocation(){
     useEffect(()=>{
         charactersById()
     },[id])
+
+    if (loading){
+        return <div style={{ display:'flex', justifyContent: 'center', textAlign: 'center', padding: '3rem' }}>
+            <img src="./loading.gif" alt="loading..." />
+        </div>
+    }
 
     return(
         <>
